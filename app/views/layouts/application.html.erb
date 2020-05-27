@@ -8,7 +8,17 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <p class="header-logo">MyPics</p>
+    <ul class="header-nav">
+      <li><%= link_to "home", posts_path %></li>
+      <% if true %>
+        <li><%= link_to "new", new_post_path %></li>
+        <li><%= link_to "favs", posts_path %></</li>
+        <% else %>
+      <% end %>
+    </ul>
+  </header>
   <body>
     <%= yield %>
   </body>
