@@ -17,8 +17,18 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def image_update
+    if logged_in? && current_user.id.to_s == params[:id]
+      @user = User.find_by(id: params[:id])
+      @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      redirect_to new_session_path
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation,:image)
   end
 end
