@@ -12,4 +12,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to posts_path
+  end
 end

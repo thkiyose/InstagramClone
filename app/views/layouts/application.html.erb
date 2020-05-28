@@ -16,11 +16,11 @@
         <li><%= link_to "new", new_post_path %></li>
         <li><%= link_to "favs", posts_path %></</li>
         <li><%= link_to "MyPage", user_path(current_user.id) %></</li>
-        <li><%= link_to "LogOut", posts_path %></</li>
+        <li><%= link_to "LogOut", session_path(current_user.id), method: :delete %></</li>
         <% else %>
-      <% end %>
         <li><%= link_to "LogIn", new_session_path %></li>
         <li><%= link_to "SignUp", new_user_path %></li>
+      <% end %>
     </ul>
   </header>
   <body>
