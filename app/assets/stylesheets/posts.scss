@@ -43,3 +43,11 @@ main {
   min-height: 100%;
   overflow: scroll;
 }
+
+.container {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(201, 201, 201);
+  width: 60%;
+  padding: 0px;
+  margin: 30px auto;
+}
