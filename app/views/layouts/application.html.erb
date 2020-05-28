@@ -27,8 +27,22 @@
     <% flash.each do |key,value| %>
       <%= content_tag(:div,value,class:key) %>
     <% end %>
-    <main>
-      <%= yield %>
-    </main>
+    <% if logged_in? %>
+      <main class="narrow">
+        <%= yield %>
+      </main>
+      <aside class="side_display">
+        <div class="side_information">
+          <h2>User</h2>
+          <%= image_tag current_user.image.url %>
+          <p><%= current_user.name %></p>
+          <p class="side_email"><%= current_user.email %></p>
+        </div>
+      </aside>
+      <% else %>
+      <main class ="wide">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>

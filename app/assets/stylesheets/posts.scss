@@ -16,6 +16,9 @@ header {
   height: 50px;
   background-color: rgb(255, 255, 255);
   border-bottom: solid 1px rgb(201, 201, 201);
+  position:fixed;
+  top:0;
+  z-index: 99;
 }
 
 .header-logo {
@@ -39,9 +42,18 @@ header {
 
 main {
   background-color: rgb(240, 240, 240);
-  width: 100%;
   min-height: 100%;
   overflow: scroll;
+  float:left;
+  padding-top: 50px;
+}
+
+.wide {
+  width: 100%;
+}
+
+.narrow {
+  width: 80%;
 }
 
 .container {
@@ -100,4 +112,32 @@ main {
 .notice {
   text-align:center;
   background-color:rgb(105, 201, 255);
+}
+
+.side_display {
+  width: 20%;
+  height: 100%;
+  position:fixed;
+  padding-top: 50px;
+  right: 0;
+  top:0;
+  z-index: 98;
+  background-color: rgb(240, 240, 240);
+  text-align: center;
+}
+
+.side_information {
+  padding: 100px 20px;
+}
+
+.side_information img {
+  width: 50px;
+  float:left;
+}
+
+.side_information h2 {
+  padding: 20px 0px;
+}
+.side_information p {
+  margin: 0 auto;
 }
