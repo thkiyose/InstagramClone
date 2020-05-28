@@ -6,6 +6,8 @@
       <% end %>
     </div>
   <% end %>
-  <%= form.text_field :content %>
+  <p><%= form.text_field :content %></p>
+  <p><%= form.file_field :image %></p>
+  <%= form.hidden_field :image_cache %>
   <%= form.submit "post"%>
 <% end %>
