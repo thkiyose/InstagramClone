@@ -7,15 +7,17 @@
         <% if logged_in? && post.user.id != current_user.id %>
           <% if current_user && current_user.favorites.find_by(post_id: post.id) %>
             <%= link_to favorite_path(post.id), method: :delete,class: "fav", remote: true do %>
-              <li class="fa fa-heart" id="<%= post.id %>"></li>
+              <li class="fa fa-heart fa-2x" id="<%= post.id %>"></li>
             <% end %>
           <% else %>
             <%= link_to favorites_path(post_id: post.id), class: "fav", method: :post,remote: true do %>
-              <li class="fa fa-heart-o" id="<%= post.id %>"></li>
+              <li class="fa fa-heart-o fa-2x" id="<%= post.id %>"></li>
             <% end %>
           <% end %>
         <% end %>
-        <li><%= link_to "詳細", post_path(post.id) %></li>
+        <%= link_to post_path(post.id) do %>
+          <li class="fas fa-ellipsis-h fa-2x"></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

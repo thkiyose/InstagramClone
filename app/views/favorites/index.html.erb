@@ -1,21 +1,23 @@
 <% @favorites.each do |favorite| %>
   <div class="container">
-    <p class="user_name"><%= image_tag favorite.post.user.image.url %><%= favorite.user.name %></p>
+    <p class="user_name"><%= image_tag favorite.post.user.image.url %><%= favorite.post.user.name %></p>
     <p class="post_image"><%= link_to (image_tag favorite.post.image.url), post_path(favorite.post.id) %></p>
     <p class="post_content"><%= favorite.post.content %></p>
     <ul class="show_menu clearfix">
       <% if logged_in? && favorite.post.user_id != current_user.id %>
         <% if current_user && current_user.favorites.find_by(post_id: favorite.post_id) %>
           <%= link_to favorite_path(favorite.post_id), method: :delete,class: "fav", remote: true do %>
-            <li class="fa fa-heart" id="<%= favorite.post_id %>"></li>
+            <li class="fa fa-heart fa-2x" id="<%= favorite.post_id %>"></li>
           <% end %>
         <% else %>
           <%= link_to favorites_path(post_id: favorite.post_id), class: "fav", method: :post,remote: true do %>
-            <li class="fa fa-heart-o" id="<%= favorite.post_id %>"></li>
+            <li class="fa fa-heart-o fa-2x" id="<%= favorite.post_id %>"></li>
           <% end %>
         <% end %>
       <% end %>
-      <li><%= link_to "詳細", post_path(favorite.post.id) %></li>
+      <%= link_to post_path(favorite.post.id) do %>
+        <li class="fas fa-ellipsis-h fa-2x"></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
