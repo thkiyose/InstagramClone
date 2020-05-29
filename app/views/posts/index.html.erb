@@ -1,7 +1,7 @@
   <% @posts.each do |post| %>
     <div class="container">
-      <p class="user_name"><%= image_tag post.user.image.url %><%= post.user.name %></p>
-      <p class="post_image"><%= image_tag post.image.url %></p>
+      <p class="user_name"><%= link_to (image_tag post.user.image.url), user_path(post.user.id) %><%= link_to post.user.name, user_path(post.user.id) %></p>
+      <p class="post_image"><%= link_to (image_tag post.image.url), post_path(post.id) %></p>
       <p class="post_content"><%= post.content %></p>
       <ul class="post_menu">
         <% if current_user && current_user.favorites.find_by(post_id: post.id) %>

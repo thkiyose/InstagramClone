@@ -160,3 +160,24 @@ main {
 .side_information p {
   margin: 0 auto;
 }
+
+.show_image {
+  margin: 0;
+  float: left;
+}
+
+.show_image img {
+  max-width: 100%;
+}
+.show_info {
+  margin: 0 auto;
+}
+
+.back {
+  margin-left: 20px;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

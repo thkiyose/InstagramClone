@@ -1,0 +1,27 @@
+<p class="back btn"><%= link_to "戻る", :back %></p>
+<div class="container clearfix">
+  <p class="show_image"><%= image_tag @post.image.url %></p>
+  <table class="show_info">
+    <tr>
+      <th>投稿者</th>
+      <td><%= link_to @post.user.name, user_path(@post.user.id) %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= @post.user.email %></td>
+    </tr>
+    <tr>
+      <th>投稿日</th>
+      <td><%= @post.created_at %></td>
+    </tr>
+  </table>
+  <ul>
+    <% if current_user && current_user.favorites.find_by(post_id: @post.id) %>
+      <li><%= link_to "いいね解除", favorite_path(@post.id), method: :delete %></li>
+      <% else %>
+        <% if current_user && @post.user_id != current_user.id %>
+          <li><%= link_to "いいね", favorites_path(post_id: @post.id), method: :post %></li>
+        <% end %>
+    <% end %>
+  </ul>
+</div>
