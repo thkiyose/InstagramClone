@@ -17,6 +17,23 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if logged_in? && @user.id == current_user.id
+      if @user.update(user_params)
+        redirect_to user_path(@user.id)
+      else
+        render :edit
+      end
+    else
+      redirect_to new_session_path
+    end
+  end
+
   def image_update
     if logged_in? && current_user.id.to_s == params[:id]
       @user = User.find_by(id: params[:id])
