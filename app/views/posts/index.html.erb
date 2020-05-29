@@ -3,5 +3,12 @@
       <p class="user_name"><%= image_tag post.user.image.url %><%= post.user.name %></p>
       <p class="post_image"><%= image_tag post.image.url %></p>
       <p class="post_content"><%= post.content %></p>
+      <ul class="post_menu">
+        <% if current_user.favorites.find_by(post_id: post.id) %>
+          <li><%= link_to "いいね解除", favorite_path(post.id), method: :delete %></li>
+          <% else %>
+          <li><%= link_to "いいね", favorites_path(post_id: post.id), method: :post %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>

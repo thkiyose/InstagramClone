@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only:[:new,:create,:destroy]
+  resources :favorites, only:[:create,:destroy]
   root to: "posts#index"
 end
