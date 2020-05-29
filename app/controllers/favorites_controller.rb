@@ -5,8 +5,12 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    Favorite.create(user_id: current_user.id,post_id: params[:post_id])
-    redirect_to posts_url
+    if current_user.id != Post.find_by(id: params[:post_id]).user_id
+      Favorite.create(user_id: current_user.id,post_id: params[:post_id])
+      redirect_to posts_url
+    else
+      redirect_to posts_url
+    end
   end
 
   def destroy
