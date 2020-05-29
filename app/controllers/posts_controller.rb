@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       redirect_to posts_path
+      flash[:notice] = "投稿しました"
     else
       render :new
     end
@@ -18,6 +19,36 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id:params[:id])
+  end
+
+  def edit
+    @post = Post.find_by(id:params[:id])
+    unless logged_in? && @post.user.id == current_user.id
+      redirect_to new_session_path
+    end
+  end
+
+  def update
+    @post = Post.find_by(id:params[:id])
+    unless logged_in? && @post.user.id == current_user.id
+      redirect_to new_session_path
+    end
+    if @post.update(post_params)
+      redirect_to post_path(@post.id)
+      flash[:notice] = "投稿を編集しました"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find_by(id:params[:id])
+    unless logged_in? && @post.user.id == current_user.id
+      redirect_to new_session_path
+    end
+    @post.destroy
+    redirect_to posts_path
+    flash[:notice] = "投稿を削除しました"
   end
 
   private

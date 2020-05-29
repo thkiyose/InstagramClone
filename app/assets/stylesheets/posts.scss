@@ -124,23 +124,31 @@ main {
   border: solid 1px rgb(201, 201, 201);
 }
 .danger {
+  position:fixed;
+  width: 100%;
+  padding-top: 50px;
   text-align:center;
   background-color:rgb(255, 168, 220);
+  z-index: 98;
 }
 
 .notice {
+  position:fixed;
+  padding-top: 50px;
+  width: 100%;
   text-align:center;
   background-color:rgb(105, 201, 255);
+  z-index: 98;
 }
 
 .side_display {
   width: 20%;
   height: 100%;
   position:fixed;
-  padding-top: 50px;
+  padding-top: 70px;
   right: 0;
   top:0;
-  z-index: 98;
+  z-index: 97;
   background-color: rgb(240, 240, 240);
   text-align: center;
 }
@@ -180,4 +188,8 @@ main {
   content: "";
   display: block;
   clear: both;
+}
+
+.show_menu li {
+  float:left;
 }

@@ -3,14 +3,19 @@
       <p class="user_name"><%= link_to (image_tag post.user.image.url), user_path(post.user.id) %><%= link_to post.user.name, user_path(post.user.id) %></p>
       <p class="post_image"><%= link_to (image_tag post.image.url), post_path(post.id) %></p>
       <p class="post_content"><%= post.content %></p>
-      <ul class="post_menu">
-        <% if current_user && current_user.favorites.find_by(post_id: post.id) %>
-          <li><%= link_to "いいね解除", favorite_path(post.id), method: :delete %></li>
-          <% else %>
-            <% if current_user && post.user_id != current_user.id %>
-              <li><%= link_to "いいね", favorites_path(post_id: post.id), method: :post %></li>
+      <ul class="show_menu clearfix">
+        <% if logged_in? && post.user.id != current_user.id %>
+          <% if current_user && current_user.favorites.find_by(post_id: post.id) %>
+            <%= link_to favorite_path(post.id), method: :delete,class: "fav", remote: true do %>
+              <li class="fa fa-heart" id="<%= post.id %>"></li>
             <% end %>
+          <% else %>
+            <%= link_to favorites_path(post_id: post.id), class: "fav", method: :post,remote: true do %>
+              <li class="fa fa-heart-o" id="<%= post.id %>"></li>
+            <% end %>
+          <% end %>
         <% end %>
+        <li><%= link_to "詳細", post_path(post.id) %></li>
       </ul>
     </div>
   <% end %>

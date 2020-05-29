@@ -1,6 +1,7 @@
 <p class="back btn"><%= link_to "戻る", :back %></p>
 <div class="container clearfix">
   <p class="show_image"><%= image_tag @post.image.url %></p>
+  <p><%= @post.content %></p>
   <table class="show_info">
     <tr>
       <th>投稿者</th>
@@ -15,13 +16,21 @@
       <td><%= @post.created_at %></td>
     </tr>
   </table>
-  <ul>
-    <% if current_user && current_user.favorites.find_by(post_id: @post.id) %>
-      <li><%= link_to "いいね解除", favorite_path(@post.id), method: :delete %></li>
-      <% else %>
-        <% if current_user && @post.user_id != current_user.id %>
-          <li><%= link_to "いいね", favorites_path(post_id: @post.id), method: :post %></li>
+  <ul class="show_menu clearfix">
+    <% if logged_in? && @post.user.id != current_user.id %>
+      <% if current_user && current_user.favorites.find_by(post_id: @post.id) %>
+        <%= link_to favorite_path(@post.id), method: :delete,class: "fav", remote: true do %>
+          <li class="fa fa-heart" id="<%= @post.id %>"></li>
         <% end %>
+      <% else %>
+        <%= link_to favorites_path(post_id: @post.id), class: "fav", method: :post,remote: true do %>
+          <li class="fa fa-heart-o" id="<%= @post.id %>"></li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if logged_in? && @post.user.id == current_user.id %>
+      <li><%= link_to "編集", edit_post_path(@post.id) %></li>
+      <li><%= link_to "削除", post_path(@post.id), data:{confirm: "本当に削除しますか？"},method: :delete %></li>
     <% end %>
   </ul>
 </div>

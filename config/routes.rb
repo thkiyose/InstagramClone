@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :posts, only:[:index,:new,:create,:show]
+  resources :posts, only:[:index,:new,:create,:show,:edit,:update,:destroy]
   resources :users, only:[:new,:create,:show,:edit,:update] do
     member do
       post "image_update"
