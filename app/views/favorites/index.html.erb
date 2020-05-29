@@ -1,0 +1,14 @@
+<% @favorites.each do |favorite| %>
+  <div class="container">
+    <p class="user_name"><%= image_tag favorite.post.user.image.url %><%= favorite.user.name %></p>
+    <p class="post_image"><%= image_tag favorite.post.image.url %></p>
+    <p class="post_content"><%= favorite.post.content %></p>
+    <ul class="post_menu">
+      <% if current_user.favorites.find_by(post_id: favorite.post_id) %>
+        <li><%= link_to "いいね解除", favorite_path(favorite.post_id), method: :delete %></li>
+        <% else %>
+        <li><%= link_to "いいね", favorites_path(post_id: favorite.post_id), method: :post %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
