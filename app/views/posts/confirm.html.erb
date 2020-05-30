@@ -1,0 +1,12 @@
+<%= form_with(model:@post,local:true) do |form| %>
+<p><%= form.submit "戻る", name: 'back' %></p>
+<div class="container">
+  <p>以下の内容でよろしいですか？</p>
+    <p><%= @post.content %></p>
+    <p><%= image_tag @post.image.url %></p>
+    <%= form.hidden_field :content %>
+    <%= form.hidden_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "post"%>
+  <% end %>
+</div>

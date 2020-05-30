@@ -9,11 +9,15 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
+    if params[:back]
+      render :new
+    else
+      if @post.save
       redirect_to posts_path
       flash[:notice] = "投稿しました"
-    else
+      else
       render :new
+      end
     end
   end
 
@@ -41,6 +45,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
+  end
+
   def destroy
     @post = Post.find_by(id:params[:id])
     unless logged_in? && @post.user.id == current_user.id
@@ -53,6 +62,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content,:image).merge(user_id:current_user.id)
+    params.require(:post).permit(:content,:image,:image_cache).merge(user_id:current_user.id)
   end
 end

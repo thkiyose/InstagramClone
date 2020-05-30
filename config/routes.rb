@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :posts, only:[:index,:new,:create,:show,:edit,:update,:destroy]
+  resources :posts, only:[:index,:new,:create,:show,:edit,:update,:destroy] do
+    collection do
+      post :confirm
+    end
+  end
   resources :users, only:[:new,:create,:show,:edit,:update] do
     member do
-      post "image_update"
+      post :image_update
     end
   end
   resources :sessions, only:[:new,:create,:destroy]

@@ -1,4 +1,3 @@
-<p class="back btn"><%= link_to "戻る", :back %></p>
 <div class="container_center">
   <p class="user_image"><%= image_tag @user.image.url %></p>
   <%= form_with(model:@user,local:true,multipart:true,url:image_update_user_path(@user.id),method: :post) do |form| %>
