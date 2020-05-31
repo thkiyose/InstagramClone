@@ -6,7 +6,7 @@ ja:
     attributes:
       post:
         content: 内容
-        image:画像
+        image: 画像
       user:
         name: 名前
         email: メールアドレス

@@ -13,10 +13,11 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-      redirect_to posts_path
-      flash[:notice] = "投稿しました"
+        PictureMailer.picture_mail(@post).deliver
+        redirect_to posts_path
+        flash[:notice] = "投稿しました"
       else
-      render :new
+        render :new
       end
     end
   end
