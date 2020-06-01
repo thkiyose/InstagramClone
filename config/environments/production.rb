@@ -92,7 +92,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.ådump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'pure-woodland-63213.herokuapp.com/ ' }
+  config.action_mailer.default_url_options = { host: 'https://pure-mesa-47077.herokuapp.com/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
@@ -103,5 +103,5 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-  
+
 end
