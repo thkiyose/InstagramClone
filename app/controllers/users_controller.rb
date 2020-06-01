@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:edit,:update,:image_update]
+
   def new
     @user = User.new
   end
@@ -51,4 +52,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(id: params[:id])
   end
+  
 end

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -18,4 +19,5 @@ class SessionsController < ApplicationController
     flash[:notice] = "ログアウトしました"
     redirect_to posts_path
   end
+  
 end

@@ -17,4 +17,5 @@ class FavoritesController < ApplicationController
     current_user.favorites.find_by(post_id: params[:id]).destroy
     render json: params[:id]
   end
+  
 end

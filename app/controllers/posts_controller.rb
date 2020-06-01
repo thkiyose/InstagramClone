@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
     @posts = Post.all.order(created_at: :DESC)
   end
@@ -65,4 +66,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:content,:image,:image_cache).merge(user_id:current_user.id)
   end
+  
 end

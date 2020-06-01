@@ -83,6 +83,7 @@ main {
   padding-left: 20px;
   margin:10px 0px 0px 0px;
 }
+
 .user_name img{
   width: 50px;
   padding-right: 20px;
@@ -123,6 +124,7 @@ main {
   display: inline-block;
   border: solid 1px rgb(201, 201, 201);
 }
+
 .danger {
   position:fixed;
   width: 100%;
@@ -177,6 +179,7 @@ main {
 .show_image img {
   max-width: 100%;
 }
+
 .show_info {
   margin: 0 auto;
 }
@@ -184,6 +187,7 @@ main {
 .back {
   margin-left: 20px;
 }
+
 .clearfix::after {
   content: "";
   display: block;
@@ -193,6 +197,7 @@ main {
 .show_menu {
   padding: 0;
 }
+
 .show_menu li {
   float:left;
   padding-left: 10px;
