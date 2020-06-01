@@ -92,7 +92,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  refused - connect(2) for "localhost" port 25):
     config.action_mailer.default_url_options = { host: 'hogehoge-fugafuga.herokuapp.com' }
     ActionMailer::Base.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
